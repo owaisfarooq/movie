@@ -1,0 +1,20 @@
+table {
+    text-align: center;
+}
+
+table>thead>tr:nth-child(2)>td>div {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    background-color: black !important;
+    height: 100vh;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}

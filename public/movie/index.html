@@ -13,16 +13,24 @@
         <table class="table table-dark table-striped table-hover">
             <thead>
                 <tr>
-                    <td class="col-md-10">Anime Name</td>
+                    <td class="col-md-1"><button class="btn btn-primary" onclick="window.location.replace('/anime')">Anime</button></td>
+                    <td class="col-md-8">Movie Name</td>
+                    <td class="col-md-2">Time Watched</td>
                     <td class="col-md-2">Actions</td>
                 </tr>
                 <tr>
-                    <td class="col-md-4">
+                    <td></td>
+                    <td class="col-md-8">
                         <div class="col-md-4">
-                            <input class="form-control" onkeyup="search(this)" type="text" id="animeNameField">
+                            <input class="form-control" onkeyup="search(this)" type="text" id="movieNameField">
                         </div>
                     </td>
-                    <td class="col-md-2"><button class="btn btn-primary" onclick="addNewAnime()">Add</button></td>
+                    <td class="col-md-2">
+                        <div class="col-md-4">
+                            <input class="form-control" type="text" id="movieTimeField">
+                        </div>
+                    </td>
+                    <td class="col-md-2"><button class="btn btn-primary" onclick="addNewMovie()">Add</button></td>
                 </tr>
             </thead>
             <tbody id="tableBody">
