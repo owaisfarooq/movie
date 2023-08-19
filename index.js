@@ -130,10 +130,14 @@ const handler = async (req, res, next) => {
 };
 
 // APIs
+app.get('/', (req, res) => {
+    res.redirect('/anime');
+})
 
 app.get('/anime', (req, res) => {
     res.sendFile('anime/index.html');
 })
+
 app.get('/movie', (req, res) => {
     res.sendFile('movie/index.html');
 })
