@@ -55,7 +55,6 @@ async function search ( element ) {
     })
     .then(res => res.json())
     .then(json => {
-        
         displayData({data: json.data.filter ( v => {
             return v.animeName.toUpperCase().includes(searchStr)
         })})

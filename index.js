@@ -15,7 +15,8 @@ const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://publicAccessAccount:LsegdWIgkFPUz0dE@moviesdb.1sjrfcm.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient ( uri );
 const db = client.db ( "anime" );
-const col = db.collection ( "animeList" );
+const animeList = db.collection ( "animeList" );
+const movieList = db.collection ( "movieList" );
 
 // constants
 let responseToBeSentBack = {}
@@ -23,7 +24,7 @@ let responseToBeSentBack = {}
 // CRUD functions
 
 async function getData ( ) {
-    return await col.find( {} ).toArray()
+    return await animeList.find( {} ).toArray()
     // if (searchStr.animeName) {
     //     return await col.find( {animeName: {$regex: searchStr.animeName,$options: "i"}} ).toArray()
     // }
@@ -34,7 +35,7 @@ async function writeData ( dataToAdd ) {
         responseToBeSentBack.message = `'animeName' is a required field`
         return
     }
-    const result = await col.insertOne ( { animeName: toCamelCase(dataToAdd.animeName) } )
+    const result = await animeList.insertOne ( { animeName: toCamelCase(dataToAdd.animeName) } )
 
     if ( !result.insertedId ) {
         responseToBeSentBack.status = 2
@@ -60,9 +61,9 @@ async function deleteData( obj, isMultiple = false ) {
         return
     }
     if (isMultiple) {
-        var responseFromDB = await col.deleteMany ( filterCondition )
+        var responseFromDB = await animeList.deleteMany ( filterCondition )
     } else {
-        var responseFromDB = await col.deleteOne ( filterCondition )
+        var responseFromDB = await animeList.deleteOne ( filterCondition )
     }
 
     if (responseFromDB.deletedCount === 0) {
